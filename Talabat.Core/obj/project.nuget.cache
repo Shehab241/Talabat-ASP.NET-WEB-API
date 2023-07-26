@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "nfhz5qYKwM3Hd/CNQJidMOVbG/MMF8qk0NOZ6VBN66u/XnfD0k9Ht5CFRg3A2Ixy5zaYzUclm3dshQ8rBxEgOA==",
+  "success": true,
+  "projectFilePath": "D:\\Courses\\Computer Science\\.Net\\Projects\\Talabat.Solution\\Talabat.Core\\Talabat.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Shehab\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\Shehab\\.nuget\\packages\\stackexchange.redis\\2.6.122\\stackexchange.redis.2.6.122.nupkg.sha512",
+    "C:\\Users\\Shehab\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
