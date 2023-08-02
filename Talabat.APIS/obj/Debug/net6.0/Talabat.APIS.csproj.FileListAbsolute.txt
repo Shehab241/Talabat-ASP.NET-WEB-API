@@ -75,3 +75,4 @@ D:\Courses\Computer Science\.Net\Projects\Talabat.Solution\Talabat.APIS\bin\Debu
 D:\Courses\Computer Science\.Net\Projects\Talabat.Solution\Talabat.APIS\bin\Debug\net6.0\Talabat.APIS.staticwebassets.runtime.json
 D:\Courses\Computer Science\.Net\Projects\Talabat.Solution\Talabat.APIS\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
 D:\Courses\Computer Science\.Net\Projects\Talabat.Solution\Talabat.APIS\bin\Debug\net6.0\StackExchange.Redis.dll
+D:\Courses\Computer Science\.Net\Projects\Talabat.Solution\Talabat.APIS\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

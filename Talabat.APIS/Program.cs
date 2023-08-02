@@ -1,13 +1,17 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using Talabat.APIS.Errors;
 using Talabat.APIS.Extenstions;
 using Talabat.APIS.Helpers;
 using Talabat.APIS.Middlewares;
+using Talabat.Core.Entities.Identity;
 using Talabat.Core.Repositories;
 using Talabat.Repository;
 using Talabat.Repository.Data;
+using Talabat.Repository.Identity;
 
 namespace Talabat.APIS
 {
@@ -26,6 +30,11 @@ namespace Talabat.APIS
 			builder.Services.AddDbContext<StoreContext>(options=>
 			{
 				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+			builder.Services.AddDbContext<AppIdentityDbContext> (options=> {
+				options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
+			
 			});
 			builder.Services.AddSingleton<IConnectionMultiplexer>(S =>
 			{
@@ -36,7 +45,11 @@ namespace Talabat.APIS
 			//ApplicationServicesExtentsion.AddApplicationServices(builder.Services);
 			builder.Services.AddApplicationServices();
 
-			var app = builder.Build();
+
+			
+			builder.Services.AddIdentityServices();
+
+            var app = builder.Build();
 
 			using var scope=app.Services.CreateScope();
 
@@ -49,8 +62,14 @@ namespace Talabat.APIS
 
 				await dbContext.Database.MigrateAsync();
 				await StoreContextSeed.SeedAsync(dbContext);
+				var identityDbContext=services.GetRequiredService<AppIdentityDbContext>();
+				await identityDbContext.Database.MigrateAsync();
 
-			}
+				var userManger = services.GetRequiredService<UserManager<AppUser>>();
+				await AppIdentityDbContextSeed.SeedUserAsync(userManger);
+
+
+            }
 			catch (Exception ex)
 			{
 				var logger = loogerFactory.CreateLogger<Program>();
